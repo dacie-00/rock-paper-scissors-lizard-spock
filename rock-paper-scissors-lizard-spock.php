@@ -25,7 +25,7 @@ function getOpponentInput($elements): string
 function validateInput($input, $elements): bool
 {
     if (!in_array($input, $elements)) {
-        echo "Invalid input!";
+        echo "Invalid input!\n";
         return false;
     }
     return true;
@@ -51,10 +51,10 @@ function playTurn($userInput, $opponentInput, $elementMap): void
     echo "tie!\n";
 }
 
-$userInput = strtolower(readline("Pick your hand! (rock, paper, scissors, lizard, spock) - "));
-$opponentInput = getOpponentInput($elements);
-$inputIsValid = validateInput($userInput, $elements);
+do {
+    $userInput = strtolower(readline("Pick your hand! (rock, paper, scissors, lizard, spock) - "));
+    $inputIsValid = validateInput($userInput, $elements);
+} while (!$inputIsValid);
 
-if ($inputIsValid) {
-    playTurn($userInput, $opponentInput, $elementMap);
-}
+$opponentInput = getOpponentInput($elements);
+playTurn($userInput, $opponentInput, $elementMap);
