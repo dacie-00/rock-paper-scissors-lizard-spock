@@ -48,15 +48,15 @@ class RockPaperScissorsLizardSpock
         }
     }
 
-    private function listElements():string
-    {
-        return implode(", ", $this->elements);
-    }
-
     private function promptUserElement(): string
     {
         $choices = $this->listElements();
         return strtolower(readline("Pick your hand ($choices) - "));
+    }
+
+    private function listElements(): string
+    {
+        return implode(", ", $this->elements);
     }
 
     private function validElement($input): bool
